@@ -1,0 +1,26 @@
+{
+  "name": "wedding",
+  "version": "1.0.0",
+  "description": "Spectral by HTML5 UP\r html5up.net | @n33co\r Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --update public/assets/sass:public/assets/css",
+    "watch-sass": "nodemon -e sass,scss -x \"npm run sass\"",
+    "watch-js": "nodemon -e js -x \"node index.js\"",
+    "watch": "npm-run-all -p watch-js watch-sass"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "connect-ensure-login": "^0.1.1",
+    "express": "^4.13.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.13.0",
+    "npm-run-all": "^1.5.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}
