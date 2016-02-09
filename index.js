@@ -1,28 +1,32 @@
 var express = require('express')
+var exphbs  = require('express-handlebars');
 
 var app = express()
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/index.html')
+  res.render('home')
 })
 app.get('/generic', function (req, res) {
-  res.sendFile(__dirname + '/generic.html')
+  res.render('generic')
 })
 app.get('/elements', function (req, res) {
-  res.sendFile(__dirname + '/elements.html')
+  res.render('elements')
 })
 app.get('/locations', function (req, res) {
-  res.sendFile(__dirname + '/locations.html')
+  res.render('locations')
 })
 app.get('/transport', function (req, res) {
-  res.sendFile(__dirname + '/transport.html')
+  res.render('transport')
 })
 app.get('/accommodation', function (req, res) {
-  res.sendFile(__dirname + '/accommodation.html')
+  res.render('accommodation')
 })
 app.get('/gifts', function (req, res) {
-  res.sendFile(__dirname + '/gifts.html')
+  res.render('gifts')
 })
 
 app.listen(3000, function () {

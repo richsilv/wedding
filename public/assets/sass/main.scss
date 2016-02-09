@@ -1813,7 +1813,7 @@
 
 /* Landing */
 
-	body.landing {
+	body.home {
 		#page-wrapper {
 			@include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("../../images/banner.jpg")'));
 			background-attachment: fixed;
@@ -1840,7 +1840,7 @@
 	}
 
 	body.is-mobile {
-		&.landing {
+		&.home {
 			#page-wrapper {
 				background: none;
 			}
