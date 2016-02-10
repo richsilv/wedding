@@ -1084,6 +1084,10 @@ body {
   .\-1u\28xsmall\29 {
     margin-left: 8.33333%; } }
 /* Basic */
+@media screen and (max-width: 980px) {
+  .large-up {
+    display: none; } }
+
 @-ms-viewport {
   width: device-width; }
 body {
@@ -1487,7 +1491,10 @@ input[type="radio"] + label:before {
   border-radius: 3px;
   border: 0;
   display: inline-block;
-  position: relative; }
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
   .image img {
     border-radius: 3px;
     display: block; }
@@ -1510,9 +1517,10 @@ input[type="radio"] + label:before {
     .image.fit img {
       width: 100%; }
   .image.standard {
-    height: 250px; }
+    height: 250px;
+    margin-bottom: 0.75em; }
   .image.standard.double {
-    height: 500pxelement-margin; }
+    height: calc(500px + 0.75em); }
 
 /* List */
 ol {
