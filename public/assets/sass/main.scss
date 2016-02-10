@@ -542,6 +542,13 @@
 				width: 100%;
 			}
 		}
+
+		&.standard {
+			height: 250px;
+		}
+		&.standard.double {
+			height: 500px + element-margin;
+		}
 	}
 
 /* List */

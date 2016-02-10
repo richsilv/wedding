@@ -1509,6 +1509,10 @@ input[type="radio"] + label:before {
     width: 100%; }
     .image.fit img {
       width: 100%; }
+  .image.standard {
+    height: 250px; }
+  .image.standard.double {
+    height: 500pxelement-margin; }
 
 /* List */
 ol {
