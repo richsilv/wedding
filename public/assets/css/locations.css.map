@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sBAAuB;EACrB,KAAK,EAAE,IAAI;;AAGb,YAAa;EACX,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK",
+"sources": ["../sass/locations.scss"],
+"names": [],
+"file": "locations.css"
+}
