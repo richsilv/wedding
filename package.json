@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --update public/assets/sass:public/assets/css",
+    "js": "browserify client.js -o public/bundle.js",
+    "watch-js": "watchify client.js -o public/bundle.js -v",
     "watch-sass": "nodemon -e sass,scss -x \"npm run sass\"",
-    "watch-js": "nodemon -e js -x \"node index.js\"",
-    "watch": "npm-run-all -p watch-js watch-sass"
+    "watch-server": "nodemon -e js -x \"node index.js\"",
+    "watch": "npm-run-all -p watch-server watch-sass watch-js"
   },
   "keywords": [],
   "author": "",
