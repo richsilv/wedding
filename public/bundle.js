@@ -1,4 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+if ($('body.home').length) {
+  $('header').addClass('alt')
+  setupForm()
+}
+
 if ($('body.locations').length) {
   require('./lib/Leaflet.MakiMarkers.js')
   setupMaps()
@@ -23,7 +28,7 @@ function setupMaps () {
   var tuscanyMarkers = []
   var serreMarkers = []
   tuscanyMarkers.push(L.marker([43.2580769, 11.6180715], {icon: castelloIcon}).addTo(tuscanyMap)
-    .bindPopup('Castello delle Serre').openPopup())
+    .bindPopup('Castello delle Serre<br>Piazza XX Settembre, 1<br>53040 Serre di Rapolano').openPopup())
   tuscanyMarkers.push(L.marker([43.0947870,12.5033100], {icon: airportIcon}).addTo(tuscanyMap)
     .bindPopup('Perugia airport'))
   tuscanyMarkers.push(L.marker([43.8086530,11.2012250], {icon: airportIcon}).addTo(tuscanyMap)
@@ -37,9 +42,9 @@ function setupMaps () {
   tuscanyMarkers.push(L.marker([41.7998870,12.2462380], {icon: airportIcon}).addTo(tuscanyMap)
     .bindPopup('Rome airport (Leonardo da Vinci)'))
   serreMarkers.push(L.marker([43.2580769, 11.6180715], {icon: castelloIcon}).addTo(serreMap)
-    .bindPopup('Castello delle Serre').openPopup())
+    .bindPopup('Castello delle Serre<br>Piazza XX Settembre, 1<br>53040 Serre di Rapolano').openPopup())
   serreMarkers.push(L.marker([43.3314949, 11.7252489], {icon: townHallIcon}).addTo(serreMap)
-    .bindPopup('Town Hall, Monte San Savino'))
+    .bindPopup('Town Hall, Monte San Savino<br>Corso Sangallo, 38'))
   serreMarkers.push(L.marker([43.2832859,11.6025952], {icon: trainIcon}).addTo(serreMap)
     .bindPopup('Rapelano Terme train station'))
 
@@ -48,6 +53,27 @@ function setupMaps () {
   var serreMarkerGroup = new L.featureGroup(serreMarkers)
   serreMap.fitBounds(serreMarkerGroup.getBounds())
 
+}
+
+function setupForm () {
+  var $button = $('[data-action="submit"]')
+  var $message = $('[data-field="message"]')
+
+  $button.on('click', function (evt) {
+    evt.preventDefault()
+    var formData = $('form').serialize()
+    $button.attr('disabled', true)
+
+    $.post('/response', formData)
+      .done(function () {
+        $message.html('Thanks very much for submitting your response!')
+        $button.attr('disabled', false)
+      })
+      .fail(function (err) {
+        $message.html(err.responseText)
+        $button.attr('disabled', false)
+      })
+  })
 }
 
 },{"./lib/Leaflet.MakiMarkers.js":2}],2:[function(require,module,exports){

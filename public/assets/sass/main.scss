@@ -872,12 +872,12 @@
 		}
 
 		&.special {
-			background-color: _palette(accent6, bg);
+			background-color: _palette(accent5, bg);
 			box-shadow: none !important;
-			color: _palette(accent6, fg-bold) !important;
+			color: _palette(accent5, fg-bold) !important;
 
 			&:hover {
-				background-color: lighten(_palette(accent6, bg), 5) !important;
+				background-color: darken(_palette(accent5, bg), 5) !important;
 			}
 
 			&:active {
@@ -1287,6 +1287,10 @@
 
 		&.style5 {
 			@include wrapper(accent7);
+		}
+
+		&.style6 {
+			@include wrapper(accent6);
 		}
 
 		@include breakpoint(medium) {
@@ -1707,7 +1711,7 @@
 			@include padding(12em, 0);
 			@include vendor('background-image', ('linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5))', 'url("../../images/banner.jpg")'));
 			background-attachment: fixed;
-			background-position: center center;
+			background-position: center -150px;
 			background-repeat: no-repeat;
 			background-size: cover;
 			text-align: center;
