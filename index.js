@@ -52,6 +52,7 @@ app.post('/response', urlencodedParser, function (req, res) {
       db.push('/responses', [{
         name: responseDetails.name,
         email: responseDetails.email,
+        date: new Date(),
         attending: responseDetails.attendance,
         castello: !!responseDetails['castello-accommodation'],
         sundayLunch: !!responseDetails['sunday-lunch'],
