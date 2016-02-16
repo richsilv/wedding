@@ -1,14 +1,17 @@
 var express = require('express')
 var exphbs  = require('express-handlebars')
+var json2csv = require('json2csv')
 var nodemailer = require('nodemailer')
-var mg = require('nodemailer-mailgun-transport');
+var mg = require('nodemailer-mailgun-transport')
 var bodyParser = require('body-parser')
 var JsonDB = require('node-json-db')
+var randomString = require('random-string')
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var db = new JsonDB('wedding-db', true, true)
 var data = db.getData('/')
 if (!data.responses) db.push('/responses', [])
+var secretToken = randomString({ length: 12 })
 
 var auth = {
   auth: {
@@ -25,7 +28,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-  res.render('home')
+  res.render('home', { secretToken: secretToken })
 })
 app.get('/locations', function (req, res) {
   res.render('locations')
@@ -41,6 +44,7 @@ app.get('/gifts', function (req, res) {
 })
 app.post('/response', urlencodedParser, function (req, res) {
   var responseDetails = req.body
+  if (responseDetails.secretToken !== secretToken) return res.status(403).send('You are not authorised to respond.')
   responseDetails.attendance = JSON.parse(responseDetails.attendance)
   if (responseIsOkay(responseDetails)) {
     var mailOptions = makeMailOptions(responseDetails)
@@ -63,6 +67,14 @@ app.post('/response', urlencodedParser, function (req, res) {
   } else {
     res.status(400).send('Please check your response, some details seem to be missing.')
   }
+})
+app.get('/get-responses', urlencodedParser, function (req, res) {
+  var data = db.getData('/responses')
+  json2csv({ data }, (err, csv) => {
+    if (err) return res.status(503).send(err)
+    res.set({ 'Content-Disposition': 'attachment; filename="wedding-responses.csv"' })
+    res.send(csv)
+  })
 })
 
 app.listen(3000, function () {

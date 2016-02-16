@@ -19,9 +19,11 @@
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",
+    "json2csv": "^3.2.0",
     "node-json-db": "^0.5.2",
     "nodemailer": "^2.1.0",
-    "npm-run-all": "^1.5.1"
+    "npm-run-all": "^1.5.1",
+    "random-string": "^0.1.2"
   },
   "devDependencies": {
     "nodemailer-mailgun-transport": "^1.0.1"
