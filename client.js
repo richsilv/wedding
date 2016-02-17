@@ -45,7 +45,7 @@ function setupMaps () {
   serreMarkers.push(L.marker([43.3314949, 11.7252489], {icon: townHallIcon}).addTo(serreMap)
     .bindPopup('Town Hall, Monte San Savino<br>Corso Sangallo, 38'))
   serreMarkers.push(L.marker([43.2832859,11.6025952], {icon: trainIcon}).addTo(serreMap)
-    .bindPopup('Rapelano Terme train station'))
+    .bindPopup('Rapolano Terme train station'))
 
   var tuscanyMarkerGroup = new L.featureGroup(tuscanyMarkers)
   tuscanyMap.fitBounds(tuscanyMarkerGroup.getBounds())
