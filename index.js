@@ -42,6 +42,12 @@ app.get('/accommodation', function (req, res) {
 app.get('/gifts', function (req, res) {
   res.render('gifts')
 })
+app.get('/order', function (req, res) {
+  res.render('order')
+})
+app.get('/lunch', function (req, res) {
+  res.render('lunch')
+})
 app.post('/response', urlencodedParser, function (req, res) {
   var responseDetails = req.body
   if (responseDetails.secretToken !== secretToken) return res.status(403).send('You are not authorised to respond.')

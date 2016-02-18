@@ -1,4 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+$(document).ready(function() {
+    $('.tooltip').tooltipster()
+})
+
 if ($('body.home').length) {
   $('header').addClass('alt')
   setupForm()
@@ -46,7 +50,7 @@ function setupMaps () {
   serreMarkers.push(L.marker([43.3314949, 11.7252489], {icon: townHallIcon}).addTo(serreMap)
     .bindPopup('Town Hall, Monte San Savino<br>Corso Sangallo, 38'))
   serreMarkers.push(L.marker([43.2832859,11.6025952], {icon: trainIcon}).addTo(serreMap)
-    .bindPopup('Rapelano Terme train station'))
+    .bindPopup('Rapolano Terme train station'))
 
   var tuscanyMarkerGroup = new L.featureGroup(tuscanyMarkers)
   tuscanyMap.fitBounds(tuscanyMarkerGroup.getBounds())
