@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('.tooltip').tooltipster()
+})
+
 if ($('body.home').length) {
   $('header').addClass('alt')
   setupForm()
